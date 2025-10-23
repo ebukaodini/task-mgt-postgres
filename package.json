@@ -1,0 +1,11 @@
+{
+  "name": "task-mgt-postgres",
+  "version": "1.0.0",
+  "description": "This is a simple Kanban board that allows you to drag and drop tasks between columns.",
+  "scripts": {
+    "docker:build": "docker-compose build --no-cache",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down"
+  },
+  "license": "ISC"
+}

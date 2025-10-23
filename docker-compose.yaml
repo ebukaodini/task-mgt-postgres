@@ -1,0 +1,47 @@
+services:
+  app:
+    build: ./app/
+    container_name: task-mgt-app
+    env_file:
+      - ./app/.env
+    ports:
+      - "3000:3000"
+    links:
+      - api
+    depends_on:
+      - api
+    volumes:
+      - ./app/:/app/
+      - /app/node_modules
+
+  api:
+    build: ./api/
+    container_name: task-mgt-api
+    env_file:
+      - ./api/.env
+    ports:
+      - 4000:4000
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./api/:/app/
+      - /app/node_modules
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres
+    environment:
+      POSTGRES_DB: task_mgt_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - 5432:5432
+    volumes:
+      - ./.volume/postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d task_mgt_db"]
+      interval: 60s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
