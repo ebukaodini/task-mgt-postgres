@@ -23,12 +23,11 @@ TASK MGT is a simple task management app.
 ---
 
 # Overview
-
 Application
-alt Application
+![alt Application](App.png)
 
 DB Schema
-alt DB Schema
+![alt DB Schema](DbSchema.png)
 
 # Technolgies and Features
 
@@ -56,7 +55,7 @@ For this project, SoC was implemented using a modular architecture, where each m
 
 In Clean Architecture, dependencies are injected, which means the higher-level modules should depend on lower-level modules. This ensures that the business logic is not coupled with the infrastructure details.
 
-For this task, this architecture was implemtented at the database level to enable testing and database mocking.
+For this project, this architecture was implemtented.
 
 # Assumptions
 
@@ -65,7 +64,6 @@ These are some assumptions made when developing this application:
 - Projects already exists in the system.
 - The Admin user already exists in the system.
 - The system is a passwordless application.
-- All lesson videos are youtube videos.
 - This application is only to be used on a desktop screen (no compatibility with mobile screens).
 
 # API Documentation
@@ -81,7 +79,7 @@ Pre-requisite: Make sure you have [docker][dc] setup on your machine.
 1. Clone the repository:
 
 ```bash
-$ git clone https://github.com/ebukaodini/task-mgt.git
+$ git clone https://github.com/ebukaodini/task-mgt-postgres.git
 ```
 
 2. Setup environment variables:
@@ -91,15 +89,21 @@ $ cp api/.env.sample api/.env
 $ cp app/.env.sample app/.env 
 ```
 
-3. Build the docker image and spin up services:
+3. From the root dir, build the docker image
 
 ```bash
-$ docker-compose up -d --build
+$ npm run docker:build
+```
+
+4. Also from the root dir, spin up all services:
+
+```bash
+$ npm run docker:up
 ```
 
 ## Usage
 
-Open the application on your browser:
+Open the application on your browser: [`http://localhost:3000`][app] 
 
 ## Credentials
 
@@ -111,5 +115,5 @@ These are the default accounts seeded into the database. Use them for different 
 
 [dc]: https://docs.docker.com/compose/
 [app]: http://localhost:3000
-[license-shield]: https://img.shields.io/github/license/ebukaodini/task-mgt.svg?style=flat-square
+[license-shield]: https://img.shields.io/github/license/ebukaodini/task-mgt-postgres.svg?style=flat-square
 [postman]: https://documenter.getpostman.com/view/6884204/2sAXjRW9kH
