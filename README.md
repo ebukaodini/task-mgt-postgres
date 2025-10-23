@@ -18,6 +18,7 @@ TASK MGT is a simple task management app.
 - [Setup](#setup)
   - [Installation](#installation)
   - [Usage](#usage)
+  - [Running Tests](#running-tests)
   - [Credentials](#credentials)
 
 ---
@@ -104,6 +105,14 @@ $ npm run docker:up
 ## Usage
 
 Open the application on your browser: [`http://localhost:3000`][app] 
+
+## Running Tests
+
+Switch to the `api` directory, and run this command:
+
+```bash
+$ npm run test
+```
 
 ## Credentials
 
