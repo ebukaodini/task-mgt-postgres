@@ -33,14 +33,6 @@ export default class UserRepo {
     }
   }
 
-  async findById(userId: User["id"]): Promise<User> {
-    try {
-      return await this.db.user.findUniqueOrThrow({ where: { id: userId } });
-    } catch (error: any) {
-      throw new PrismaError(error);
-    }
-  }
-
   async findByEmail(email: User["email"]): Promise<User> {
     try {
       return await this.db.user.findUniqueOrThrow({ where: { email } });
@@ -49,14 +41,4 @@ export default class UserRepo {
     }
   }
 
-  async update(userId: User["id"], user: Partial<User>): Promise<User> {
-    try {
-      return await this.db.user.update({
-        data: user as User,
-        where: { id: userId },
-      });
-    } catch (error: any) {
-      throw new PrismaError(error);
-    }
-  }
 }

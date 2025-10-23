@@ -33,20 +33,6 @@ export class TaskDto {
   @IsOptional({ groups: ["create", "update"] })
   description: string;
 
-  // @Exists(
-  //   { entity: "task", field: "id" },
-  //   { message: "task doesn't exist", groups: ["create"] }
-  // )
-  // @IsUUID(4, {
-  //   message: "task ID is invalid",
-  //   groups: ["create"],
-  // })
-  // @IsNotEmpty({
-  //   message: "task ID is required",
-  //   groups: ["create"],
-  // })
-  // taskId: string;
-
   @Exists(
     { entity: "project", field: "id" },
     { message: "Project doesn't exist", groups: ["create", "fetch"] }
